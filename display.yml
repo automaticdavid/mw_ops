@@ -16,11 +16,21 @@
       debug:
         var: my_var_cadre_high
 
-    - name: display mw
+    - name: display cadre (web)
+      debug:
+        var: cadre.resources.web
+      when:  web in group_names
+
+    - name: display cadre (mw)
+      debug:
+        var: cadre.resources.mw
+      when:  mw in group_names
+
+    - name: display project mw
       debug:
         var: hostvars[inventory_hostname].my_var_project_mw
 
-    - name: display web
+    - name: display project web
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
 
