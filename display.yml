@@ -36,8 +36,8 @@
 
     - name: display host_vars
       debug: 
-        var: special_host_var
-      when: special_host_var
+        var: hostvars[inventory_hostname].special_host_var
+      when: hostvars[inventory_hostname].special_host_var
 
     - name: display arbitrary secret
       debug: 
