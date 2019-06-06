@@ -5,6 +5,9 @@
 
   tasks:
 
+    - include_role: 
+        name: cadre
+
     - name: display cadre
       debug: 
         var: hostvars[inventory_hostname].my_var_cadre

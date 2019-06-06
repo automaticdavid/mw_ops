@@ -1,0 +1,3 @@
+- src: https://github.com/automaticdavid/mw_config_cadre.git
+  version: master
+  name: cadre
