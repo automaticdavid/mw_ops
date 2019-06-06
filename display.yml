@@ -34,6 +34,11 @@
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
 
+    - name: display host_vars
+      debug: 
+        var: special_host_var
+      when: special_host_var
+
     - name: display arbitrary secret
       debug: 
         var:  sqlpass 
