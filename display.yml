@@ -19,12 +19,12 @@
     - name: display cadre (web)
       debug:
         var: cadre.resources.web
-      when:  web in group_names
+      when:  'web' in group_names
 
     - name: display cadre (mw)
       debug:
         var: cadre.resources.mw
-      when:  mw in group_names
+      when:  'mw' in group_names
 
     - name: display project mw
       debug:
