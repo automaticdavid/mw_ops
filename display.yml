@@ -18,17 +18,13 @@
 
     - name: display cadre (web)
       debug:
-        var: cadre_resource['web']
+        var: cadre_resource.web
       when:  "'web' in group_names"
 
     - name: display cadre (mw)
       debug:
-        var: cadre_resource['mw']
+        var: cadre_resource.mw
       when:  "'mw' in group_names"
-
-    - name: display cadre 
-      debug:
-        var: cadre_resource
 
     - name: display project mw
       debug:
@@ -38,3 +34,7 @@
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
 
+    - name: display arbitrary secret
+      debug: 
+        var: "{{ sqlpass }}"
+      run_once: true
