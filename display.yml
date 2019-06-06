@@ -36,5 +36,5 @@
 
     - name: display arbitrary secret
       debug: 
-        var: "{{ sqlpass }}"
+        var:  sqlpass 
       run_once: true
