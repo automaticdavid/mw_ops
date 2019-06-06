@@ -12,3 +12,8 @@
     - name: display hostvars
       debug:
         var: hostvars.my_var_projet
+
+    - name: display hostvars
+      debug:
+        var: hostvars
+
