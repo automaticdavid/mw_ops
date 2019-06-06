@@ -7,13 +7,13 @@
 
     - name: display hostvars
       debug: 
-        var: hostvars.my_var_cadre
+        var: hostvars[inventory_hostname].my_var_cadre
 
     - name: display hostvars
       debug:
-        var: hostvars["my_var_project"]
+        var: hostvars[inventory_hostname].my_var_project
 
     - name: display hostvars
       debug:
-        var: hostvars
+        var: hostvars[inventory_hostname]
 
