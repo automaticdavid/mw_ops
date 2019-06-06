@@ -24,6 +24,3 @@
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
 
-    - debug:
-        var: vars
-
