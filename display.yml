@@ -5,15 +5,18 @@
 
   tasks:
 
-    - name: display hostvars
+    - name: display cadre
       debug: 
         var: hostvars[inventory_hostname].my_var_cadre
 
-    - name: display hostvars
+    - name: display mw
       debug:
         var: hostvars[inventory_hostname].my_var_project_mw
 
-    - name: display hostvars
+    - name: display web
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
+
+    - debug:
+        var: vars
 
