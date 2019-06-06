@@ -10,7 +10,11 @@
 
     - name: display cadre
       debug: 
-        var: hostvars[inventory_hostname].my_var_cadre
+        var: hostvars[inventory_hostname].my_var_cadre_low
+
+    - name: display cadre
+      debug:
+        var: hostvars[inventory_hostname].my_var_cadre_high
 
     - name: display mw
       debug:
