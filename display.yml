@@ -8,13 +8,13 @@
     - include_role: 
         name: cadre
 
-    - name: display cadre
+    - name: display cadre (default)
       debug: 
-        var: hostvars[inventory_hostname].my_var_cadre_low
+        var: my_var_cadre_low
 
-    - name: display cadre
+    - name: display cadre (vars)
       debug:
-        var: hostvars[inventory_hostname].my_var_cadre_high
+        var: my_var_cadre_high
 
     - name: display mw
       debug:
