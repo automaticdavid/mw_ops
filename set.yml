@@ -1,0 +1,47 @@
+---
+- name: Set multiple values on targets
+  gather_facts: yes
+  hosts: all
+
+  tasks:
+
+    - import_role: 
+        name: cadre
+
+    - name: set cadre (default)
+      debug: 
+        var: my_var_cadre_low
+
+    - name: set cadre (vars)
+      debug:
+        var: my_var_cadre_high
+
+    - name: set cadre (web)
+      debug:
+        var: cadre_resource.web
+      when:  "'web' in group_names"
+
+    - name: set cadre (mw)
+      debug:
+        var: cadre_resource.mw
+      when:  "'mw' in group_names"
+
+    - name: set project mw
+      debug:
+        var: hostvars[inventory_hostname].my_var_project_mw
+      when:  hostvars[inventory_hostname].my_var_project_mw is defined
+
+    - name: set project web
+      debug:
+        var: hostvars[inventory_hostname].my_var_project_web
+      when: hostvars[inventory_hostname].my_var_project_web is defined
+
+    - name: set host_vars
+      debug: 
+        var: hostvars[inventory_hostname].special_host_var
+      when: hostvars[inventory_hostname].special_host_var is defined
+
+    - name: set arbitrary secret
+      debug: 
+        var:  sqlpass 
+      run_once: true
