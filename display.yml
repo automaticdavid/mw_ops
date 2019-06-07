@@ -29,12 +29,12 @@
     - name: display project mw
       debug:
         var: hostvars[inventory_hostname].my_var_project_mw
-      when:  hostvars[inventory_hostname].my_var_project_mw
+      when:  hostvars[inventory_hostname].my_var_project_mw is defined
 
     - name: display project web
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
-      when: hostvars[inventory_hostname].my_var_project_web
+      when: hostvars[inventory_hostname].my_var_project_web is defined
 
     - name: display host_vars
       debug: 
