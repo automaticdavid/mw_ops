@@ -29,10 +29,12 @@
     - name: display project mw
       debug:
         var: hostvars[inventory_hostname].my_var_project_mw
+      when:  hostvars[inventory_hostname].my_var_project_mw
 
     - name: display project web
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
+      when: hostvars[inventory_hostname].my_var_project_web
 
     - name: display host_vars
       debug: 
