@@ -5,17 +5,17 @@
 
   tasks:
 
-    - name: Find the config files
-      find: 
-        path: /mw_config
-        pattern: '*.cfg'
-      register: config_files
+    # - name: Find the config files
+    #   find: 
+    #     path: /mw_config
+    #     pattern: '*.cfg'
+    #   register: config_files
 
     - name: Reading file contents
       slurp:
         src: "{{ item }}"
       register: config_values
-      loop: config_files.files
+      with_fileglob: "/mw_config/*.cfg"
 
     - name: Display config values
       debug:
