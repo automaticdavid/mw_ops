@@ -15,7 +15,8 @@
       slurp:
         src: "{{ item }}"
       register: config_values
-      with_fileglob: "/mw_config/*.cfg"
+      with_fileglob: 
+        - "/mw_config/*.cfg"
 
     - name: Display config values
       debug:
