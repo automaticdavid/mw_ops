@@ -7,41 +7,92 @@
 
     - import_role: 
         name: cadre
+    
+    - name: Create config directory if it does not exist
+      file:
+        path: /mw_config
+        state: directory
+        mode: '0755'
 
-    - name: set cadre (default)
+    - name: Display value of cadre (default)
       debug: 
         var: my_var_cadre_low
 
-    - name: set cadre (vars)
+    - name: Writing cadre (default)
+      copy: 
+        content: "{{ my_var_cadre_low }}"
+        dest: /mw_config/my_var_cadre_low.cfg
+
+    - name: Display value of cadre (vars)
       debug:
         var: my_var_cadre_high
 
-    - name: set cadre (web)
+    - name: Writing cadre (vars)
+      copy: 
+        content: "{{ my_var_cadre_high }}"
+        dest: /mw_config/my_var_cadre_high.cfg
+
+    - name: Display value of cadre (web)
       debug:
         var: cadre_resource.web
       when:  "'web' in group_names"
 
-    - name: set cadre (mw)
+    - name: Writing cadre (web)
+      copy: 
+        content: "{{ cadre_resource.web }}"
+        dest: /mw_config/cadre_resource.web.cfg
+      when:  "'web' in group_names"
+
+    - name: Display value of cadre (mw)
       debug:
         var: cadre_resource.mw
       when:  "'mw' in group_names"
 
-    - name: set project mw
+    - name: Writing cadre (mw)
+      copy: 
+        content: "{{ cadre_resource.web }}"
+        dest: /mw_config/cadre_resource.mw.cfg
+      when:  "'mw' in group_names"
+
+    - name: Display value of project mw
       debug:
         var: hostvars[inventory_hostname].my_var_project_mw
       when:  hostvars[inventory_hostname].my_var_project_mw is defined
 
-    - name: set project web
+    - name: Write value of project mw
+      copy:
+        content: hostvars[inventory_hostname].my_var_project_mw
+        dest: /mw_config/my_var_project_mw.cfg
+      when:  hostvars[inventory_hostname].my_var_project_mw is defined
+
+    - name: Display value of project web
       debug:
         var: hostvars[inventory_hostname].my_var_project_web
       when: hostvars[inventory_hostname].my_var_project_web is defined
 
-    - name: set host_vars
+    - name: Write value project web
+      copy:
+        content: hostvars[inventory_hostname].my_var_project_web
+        dest: /mw_config/my_var_project_web.cfg
+      when: hostvars[inventory_hostname].my_var_project_web is defined
+
+    - name: Display value of special host_vars
       debug: 
         var: hostvars[inventory_hostname].special_host_var
       when: hostvars[inventory_hostname].special_host_var is defined
 
-    - name: set arbitrary secret
+    - name: Write value of special host_vars
+      copy: 
+        content: hostvars[inventory_hostname].special_host_var
+        dest: /mw_config/specical.cfg
+      when: hostvars[inventory_hostname].special_host_var is defined
+
+    - name: Display arbitrary secret
       debug: 
         var:  sqlpass 
       run_once: true
+
+    - name: Write arbitrary secret
+      copy: 
+        content:  sqlpass 
+        dest:  /mw_config/secret.cfg
