@@ -2,6 +2,7 @@
 - name: Set multiple values on targets
   gather_facts: yes
   hosts: all
+  become: yes
 
   tasks:
 
