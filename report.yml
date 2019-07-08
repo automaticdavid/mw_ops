@@ -16,7 +16,7 @@
         src: "{{ item.path }}"
         remote_src: true
       register: config_values
-      loop: config_files.path
+      loop: "{{ config_files.files }}"
 
     - name: Display config values
       debug:
