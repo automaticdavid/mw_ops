@@ -5,19 +5,18 @@
 
   tasks:
 
-    # - name: Find the config files
-    #   find: 
-    #     path: /mw_config
-    #     pattern: '*.cfg'
-    #   register: config_files
+    - name: Get files on remote machine
+      find:
+        paths: /mw_config 
+        pattern: '*.cfg'
+      register: config_files
 
     - name: Reading file contents
       slurp:
-        src: "{{ item }}"
+        src: "{{ item.path }}"
         remote_src: true
       register: config_values
-      with_fileglob: 
-        - "/mw_config/*.cfg"
+      with: config_files.path
 
     - name: Display config values
       debug:
