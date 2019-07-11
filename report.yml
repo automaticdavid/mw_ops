@@ -17,12 +17,21 @@
       register: config_values
       loop: "{{ config_files.files }}"
 
-
     - name: Display config values
       debug:
         msg: "{{ config_values }}"
 
-
     - name: Display config values
       debug:
-        msg: "{{ config_values['content'] | b64decode }}"
+        msg: "{{ item['content'] | b64decode }}"
+      loop: "{{ config_values.results }}"
+
+    - name: Store config values
+      set_fact:
+        config_report: "{{ item['content'] | b64decode }}"
+      loop: "{{ config_values.results }}"
+
+    - name: Display config report
+      debug:
+        var: config_report
+      
