@@ -19,4 +19,4 @@
 
     - name: Display config values
       debug:
-        msg: "{{config_values.['content'] | b64decode }}"
+        msg: "{{ config_values.content | b64decode }}"
