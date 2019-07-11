@@ -17,6 +17,12 @@
       register: config_values
       loop: "{{ config_files.files }}"
 
+
     - name: Display config values
       debug:
-        msg: "{{ config_values.content | b64decode }}"
+        msg: "{{ config_values }}"
+
+
+    - name: Display config values
+      debug:
+        msg: "{{ config_values['content'] | b64decode }}"
