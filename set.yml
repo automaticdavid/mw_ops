@@ -27,6 +27,10 @@
     - name: Display value of cadre (vars)
       debug:
         var: my_var_cadre_high
+        
+    - name: My new stuff
+      debug:
+        var: test_devel_var
 
     - name: Writing cadre (vars)
       copy: 
