@@ -41,7 +41,7 @@
         var: hostvars[inventory_hostname].special_host_var
       when: hostvars[inventory_hostname].special_host_var is defined
 
-    - name: display arbitrary secret
-      debug: 
-        var:  sqlpass 
-      run_once: true
+    # - name: display arbitrary secret
+    #  debug: 
+    #    var:  sqlpass 
+    #  run_once: true
