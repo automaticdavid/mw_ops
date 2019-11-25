@@ -1,6 +1,6 @@
 ---
 - name: Parsing multiple vars
-  gather_facts: yes
+  gather_facts: no
   hosts: all
 
   tasks:
