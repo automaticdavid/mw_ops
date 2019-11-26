@@ -43,7 +43,7 @@
 
     - name: display change
       debug: 
-        msg:  "Hello Paris !" 
+        msg:  "Hello World !" 
       run_once: true
 
     # - name: display arbitrary secret
